@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<!--
+		Tests for browser.
+		Open this file in browser via web server.
+
+		Tun run tests in node run "node test".
+
+		Before opening this file you need to compile tests.
+		To compile tests run "node build/tests".
+
+		Important: this file should be ran from web server, not file://
+	-->
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+	<meta name="viewport" content="width=1024px">
+	<title>Tests</title>
+    <link href="./node_modules/mocha/mocha.css" rel="stylesheet" />
+	<style>
+		#debug, #debug2 { display: none }
+
+		#log {
+			font: 11px / 15px sans-serif;
+		}
+	</style>
+</head>
+<body>
+	<div id="mocha"></div>
+	<div id="debug"></div>
+	<div id="debug2"></div>
+	<div id="log"></div>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdn.rawgit.com/Automattic/expect.js/0.3.1/index.js"></script>
+    <script src="./node_modules/mocha/mocha.js"></script>
+	<script src="./node_modules/chai/chai.js"></script>
+	<script>mocha.setup('bdd');</script>
+
+	<script src="./debug/tests.js"></script>
+	<script>
+		$(document).ready(function() {
+            mocha.checkLeaks();
+            mocha.setup({
+                ignoreLeaks: true
+			});
+            mocha.run();
+		});
+
+		(function() {
+		    var oldLog = console.log;
+
+            console.log = function() {
+                oldLog.apply(this, arguments);
+
+                var html = '';
+                for (var i = 0; i < arguments.length; i ++) {
+                    switch (typeof arguments[i]) {
+                        case 'string':
+                        case 'number':
+                        case 'function':
+                            html += ' ' + arguments[i];
+                            break;
+
+                        default:
+                            html += ' ' + JSON.stringify(arguments[i]);
+                    }
+                }
+                $('#log').append($('<p />').text(html));
+            };
+
+		})();
+	</script>
+</body>
+</html>

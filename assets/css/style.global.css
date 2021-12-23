@@ -1,0 +1,124 @@
+/* reset css */
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  word-spacing: 1px;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  scroll-behavior: smooth;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  font-family: "Open Sans", sans-serif;
+}
+
+/* declare variable */
+:root {
+  --primary-color: #4942a2;
+  --secondary-color: #3a357b;
+}
+
+/* selection effect */
+::selection {
+  color: #fff;
+  background-color: var(--secondary-color);
+}
+
+/* global css */
+li {
+  list-style-type: none;
+}
+
+input,
+textarea {
+  outline: none;
+  background-color: #e2e2e2;
+  resize: none;
+  color: #636363;
+  font-weight: 400;
+  font-size: 16px;
+  border-radius: 8px;
+}
+
+.container-fluid {
+  padding: 0px 200px;
+}
+
+/* Carousel custom */
+button.slick-prev,
+button.slick-next {
+  font-size: 0;
+  line-height: 0;
+  position: absolute;
+  top: 50%;
+  display: block;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  transform: translate(0, -50%);
+  cursor: pointer;
+  color: white;
+  border: none;
+  outline: none;
+  background: white;
+  border-radius:50%;
+  overflow: hidden;
+}
+
+button.slick-next{
+  right:0px;
+}
+
+button.slick-prev{
+  left:0px;
+}
+
+button.slick-prev:before,
+button.slick-next:before {
+  font-family: "slick";
+  font-size: 28px;
+  line-height: 1.2;
+  opacity: 1;
+  color:var(--primary-color);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+button.slick-prev:hover,
+button.slick-prev:focus,
+button.slick-next:hover,
+button.slick-next:focus {
+  color: white;
+  outline: none;
+  background: white;
+}
+
+button.slick-prev:hover:before,
+button.slick-next:hover:before {
+  color:#FBA60B;
+  transition: all .3s ease 0s;
+}
+
+/* global responsive css */
+@media screen and (max-width: 992px) {
+  .container-fluid {
+    padding: 0px 150px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .container-fluid {
+    padding: 0px 100px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .container-fluid {
+    padding: 0px 50px;
+  }
+}

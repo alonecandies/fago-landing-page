@@ -1,0 +1,13 @@
+{
+	"name": "iconify/js",
+	"description": "SVG framework with over 30,000 icons to choose from",
+	"author": "Vjacheslav Trushkin <cyberalien@gmail.com> (https://iconify.design)",
+	"type": "library",
+	"license": "(Apache-2.0 OR GPL-2.0)",
+	"homepage": "https://iconify.design/",
+	"autoload": {
+		"psr-4": {
+			"Iconify\\JS\\": "build"
+		}
+	}
+}
